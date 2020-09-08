@@ -44,7 +44,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv(installationName: 'TodoSonarQubeScanner', credentialsId: 'sonar') {
-                    sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.java.binaries=build/classes/java/ \
+                    sh '''$SCANNER_HOME/bin/sonar-scanner \
                     -Dsonar.projectKey=$PROJECT_NAME \
                     -Dsonar.sources=.'''
                 }
