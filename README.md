@@ -5,4 +5,4 @@ Each branch contains a new "Step" of code. Please fork, then clone.
 
 Author Victor K N 
 
-Moringa Sch
+Moringa School
