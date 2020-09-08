@@ -36,6 +36,20 @@ pipeline {
                 sh 'gradle test'
             }
         }
+        stage('SonarScan') {
+            environment {
+                SCANNER_HOME = tool 'SonarQubeScanner'
+                SONAR_TOKEN = credentials('sonar')
+                PROJECT_NAME = "java-todo-jenkins"
+            }
+            steps {
+                withSonarQubeEnv(installationName: 'TodoSonarQubeScanner', credentialsId: 'sonar') {
+                    sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.java.binaries=build/classes/java/ \
+                    -Dsonar.projectKey=$PROJECT_NAME \
+                    -Dsonar.sources=.'''
+                }
+            }
+        }
         stage('Deploy to Heroku') {
             steps {
                 withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
