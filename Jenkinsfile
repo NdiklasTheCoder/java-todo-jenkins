@@ -46,7 +46,6 @@ pipeline {
                 withSonarQubeEnv(installationName: 'TodoSonarQubeScanner', credentialsId: 'sonar') {
                     sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.java.binaries=build/classes/java/ \
                     -Dsonar.projectKey=$PROJECT_NAME \
-                    -Dsonar.host.url=http://localhost:9000 \
                     -Dsonar.sources=.'''
                 }
             }
