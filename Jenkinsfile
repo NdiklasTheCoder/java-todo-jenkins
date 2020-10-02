@@ -91,10 +91,10 @@ node {
         stage 'Deploy'
             echo "Testing deploy."
         stage 'Publish results'
-            slackSend color: "good", message: "Build successful :sunglasses: \n `${env.JOB_NAME}#${env.BUILD_NUMBER}` <${env.BUILD_URL}|Fire up Jenkins> \n Bravo Site is Live \n https://secret-atoll-45927.herokuapp.com/"
+            slackSend color: "good", message: "Build successful :sunglasses: \n `${env.JOB_NAME}#${env.BUILD_NUMBER}` <${env.BUILD_URL}|Fire up Jenkins> \n Bravo Site is Live \n Test-Automation success  +1:+1::thumbsup: \n https://secret-atoll-45927.herokuapp.com/"
     }
     catch (err) {
-        slackSend color: "danger", message: "Build failed :disappointed_relieved: \n`${env.JOB_NAME}#${env.BUILD_NUMBER}` <${env.BUILD_URL}|Fire up Jenkins, SonarQubeScanner OK>"
+        slackSend color: "danger", message: "Build failed :disappointed_relieved: \n`${env.JOB_NAME}#${env.BUILD_NUMBER}` <${env.BUILD_URL}|Fire up Jenkins fail, SonarQubeScanner fail>"
         throw err
     }
 }
