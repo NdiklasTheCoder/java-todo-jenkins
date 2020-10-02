@@ -14,7 +14,7 @@ pipeline {
         
         EMAIL_SUBJECT_FAILURE =  "Status: 'FAILURE' -Job \'${env.JOB_NAME}:${env.BUILD_NUMBER}\'"
         
-        EMAIL_RECEPIENT = 'jamesking1775@gmail.com' 
+        EMAIL_RECEPIENT = 'nicholas.v.ndiki@gmail.com' 
         
     }
     tools{
@@ -23,7 +23,7 @@ pipeline {
     stages {
         stage('clone repository') {
             steps{
-                git 'https://github.com/Vinge1718/java-todo-jenkins'
+                git 'https://github.com/NdiklasTheCoder/java-todo-jenkins'
             }
         }
         stage ('Build project') {
@@ -52,8 +52,8 @@ pipeline {
         }
         stage('Deploy to Heroku') {
             steps {
-                withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
-                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/agile-scrubland-58382.git master'
+                withCredentials([usernameColonPassword(credentialsId: 'Ndiki', variable: 'HEROKU_CREDENTIALS' )]){
+                    sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/secret-atoll-45927.git master'
                 }
             }
         
